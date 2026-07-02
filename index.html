@@ -1,107 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0c10">
+<meta name="description" content="Angel Casas — Android Root, desarrollador y entusiasta de ciberseguridad. Redes, contacto y proyectos.">
 
-<title>Angel Casas</title>
+<meta property="og:title" content="Angel Casas">
+<meta property="og:description" content="Android Root · Developer · Cybersecurity">
+<meta property="og:image" content="avatar.png">
+<meta property="og:type" content="profile">
+
+<title>Angel Casas — Android Root · Developer · Cybersecurity</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
-
 <body>
 
-<canvas id="matrix"></canvas>
+<canvas id="matrix" aria-hidden="true"></canvas>
+<div class="grid-overlay" aria-hidden="true"></div>
 
-<div class="container">
+<main class="container">
 
-<div class="avatar-container">
-<img src="avatar.png" class="avatar">
-</div>
+  <div class="badge-id">
+    <div class="avatar-ring">
+      <img src="avatar.png" alt="Angel Casas" class="avatar">
+    </div>
+    <span class="status-chip"><span class="status-dot"></span>ONLINE</span>
+  </div>
 
+  <h1 class="name">Angel Casas</h1>
+  <p class="role">Android Root <span class="dot-sep">·</span> Developer <span class="dot-sep">·</span> Cybersecurity</p>
 
-<h1>Angel Casas</h1>
+  <section class="terminal" aria-label="Perfil del sistema">
+    <div class="terminal-bar">
+      <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+      <span class="terminal-path">root@angelcasas:~</span>
+    </div>
+    <div class="terminal-body" id="terminalBody"></div>
+  </section>
 
-<p class="bio">
-Android Root • Developer • Cybersecurity
-</p>
+  <nav class="socials" aria-label="Redes sociales">
+    <a href="https://www.youtube.com/@angelcasas5557" target="_blank" rel="noopener" class="social" aria-label="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+    <a href="https://www.twitch.tv/tatsububis" target="_blank" rel="noopener" class="social" aria-label="Twitch">
+      <i class="fa-brands fa-twitch"></i>
+    </a>
+    <a href="https://www.instagram.com/ghericasas_f1rst/" target="_blank" rel="noopener" class="social" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://x.com/Angel66314934" target="_blank" rel="noopener" class="social" aria-label="X">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a>
+    <a href="https://www.reddit.com/user/No_Length8779/" target="_blank" rel="noopener" class="social" aria-label="Reddit">
+      <i class="fa-brands fa-reddit"></i>
+    </a>
+    <a href="https://www.tiktok.com/@ghericasas" target="_blank" rel="noopener" class="social" aria-label="TikTok">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+  </nav>
 
-<div class="views">
-<i class="fa fa-eye"></i> 32
-</div>
+  <div class="panel">
 
-<div class="socials">
+    <a href="mailto:ghericasas@gmail.com" class="access-card">
+      <span class="access-icon"><i class="fa-solid fa-envelope"></i></span>
+      <span class="access-text">
+        <span class="access-label">Correo</span>
+        <span class="access-sub">ghericasas@gmail.com</span>
+      </span>
+      <i class="fa-solid fa-chevron-right access-arrow"></i>
+    </a>
 
-<a href="https://www.youtube.com/@angelcasas5557" target="_blank">
-<i class="fab fa-youtube"></i>
-</a>
+    <a href="https://wa.me/51936638453" target="_blank" rel="noopener" class="access-card">
+      <span class="access-icon"><i class="fa-brands fa-whatsapp"></i></span>
+      <span class="access-text">
+        <span class="access-label">WhatsApp</span>
+        <span class="access-sub">+51 936 638 453</span>
+      </span>
+      <i class="fa-solid fa-chevron-right access-arrow"></i>
+    </a>
 
-<a href="https://www.twitch.tv/tatsububis" target="_blank">
-<i class="fab fa-twitch"></i>
-</a>
+    <a href="https://discord.gg/JNtDfqm9fH" target="_blank" rel="noopener" class="access-card">
+      <span class="access-icon"><i class="fa-brands fa-discord"></i></span>
+      <span class="access-text">
+        <span class="access-label">Discord</span>
+        <span class="access-sub">discord.gg/JNtDfqm9fH</span>
+      </span>
+      <i class="fa-solid fa-chevron-right access-arrow"></i>
+    </a>
 
-<a href="https://www.instagram.com/ghericasas_f1rst/" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
+  </div>
 
-<a href="https://x.com/Angel66314934" target="_blank">
-<i class="fab fa-x-twitter"></i>
-</a>
+  <section class="player" id="player">
 
-<a href="https://www.reddit.com/user/No_Length8779/" target="_blank">
-<i class="fab fa-reddit"></i>
-</a>
+    <div class="player-head">
+      <span class="player-icon"><i class="fa-solid fa-music"></i></span>
+      <div class="player-titles">
+        <span class="player-tag">Reproductor</span>
+        <span class="player-track">My Way — Frank Sinatra</span>
+      </div>
+      <div class="eq" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
 
-<a href="https://www.tiktok.com/@ghericasas" target="_blank">
-<i class="fab fa-tiktok"></i>
-</a>
+    <div class="player-controls">
+      <button id="playBtn" aria-label="Reproducir">
+        <i class="fa-solid fa-play"></i>
+      </button>
+      <div class="player-progress-wrap">
+        <div class="progress-bar"><div id="progress"></div></div>
+        <div class="time-row">
+          <span id="timeCurrent">0:00</span>
+          <span id="timeTotal">0:00</span>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <audio id="audio" preload="metadata">
+      <source src="Frank Sinatra - My Way (2008 Remastered).mp3">
+    </audio>
 
-<a href="mailto:ghericasas@gmail.com" class="card">
-<i class="fa fa-envelope"></i> Contacto
-</a>
+  </section>
 
-<a href="https://wa.me/51936638453" class="card" target="_blank">
-<i class="fa fa-phone"></i> WhatsApp
-</a>
+  <footer class="footer">
+    <span class="footer-prompt">root@angelcasas:~$ <span class="cursor"></span></span>
+  </footer>
 
-<a href="https://discord.gg/JNtDfqm9fH" class="card" target="_blank">
-<i class="fa fa-user"></i> Discord
-</a>
-
-<div class="music-player">
-
-<div class="music-title">
-<i class="fa-solid fa-music"></i> Sing with me <i class="fa-solid fa-music"></i>
-</div>
-
-<button id="playBtn">
-<i class="fa-solid fa-play"></i>
-</button>
-
-<div class="progress-bar">
-<div id="progress"></div>
-</div>
-
-<audio id="audio">
-
-<source src="Frank Sinatra - My Way (2008 Remastered).mp3">
-
-</audio>
-
-</div>
-
-</div>
+</main>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
