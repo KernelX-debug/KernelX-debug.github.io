@@ -1,11 +1,4 @@
-/* ============================================================
-   Angel Casas — script.js
-   Matrix rain (ambient) + terminal typewriter + audio player
-   ============================================================ */
-
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* ---------------- Matrix rain (ambient background) ---------------- */
 
 const canvas = document.getElementById('matrix');
 const ctx = canvas.getContext('2d');
@@ -55,7 +48,6 @@ if(!reduceMotion){
   setInterval(drawMatrix, 60);
 }
 
-/* ---------------- Terminal typewriter ---------------- */
 
 const termBody = document.getElementById('terminalBody');
 
@@ -68,16 +60,12 @@ const termLines = [
   { text: "estado   : [ONLINE]", type: "out" }
 ];
 
-// Contador real y persistente vía CounterAPI (gratis, sin backend propio).
-// V1 no requiere API key: https://docs.counterapi.dev/api/endpoints/v1/
 const COUNTER_NAMESPACE = "kernelx-debug-angelcasas";
 const COUNTER_NAME = "site-views";
 const COUNTER_BASE_URL = `https://api.counterapi.dev/v1/${COUNTER_NAMESPACE}/${COUNTER_NAME}`;
 const LAST_VISIT_KEY = "angelcasas_last_visit";
-const FALLBACK_VISIT_COUNT = 32; // se usa solo si la API no responde (offline, bloqueada, etc.)
+const FALLBACK_VISIT_COUNT = 32;
 
-// Solo suma +1 una vez por día por navegador (evita que un F5 infle el número).
-// El resto de las veces solo consulta el valor actual, sin incrementarlo.
 async function getVisitCount(){
   const today = new Date().toISOString().slice(0, 10);
   let lastVisit = null;
@@ -165,7 +153,7 @@ function animateVisitCount(target){
   const el = document.getElementById('visitCount');
   if(!el) return;
   let current = 0;
-  const stepTime = target > 300 ? 12 : 45; // números grandes suben más rápido
+  const stepTime = target > 300 ? 12 : 45;
   const step = setInterval(() => {
     current++;
     el.textContent = String(current).padStart(4, '0');
@@ -178,7 +166,6 @@ function animateVisitCount(target){
 
 typeTerminal();
 
-/* ---------------- Audio player ---------------- */
 
 const audio = document.getElementById('audio');
 const playBtn = document.getElementById('playBtn');
@@ -187,8 +174,6 @@ const timeCurrent = document.getElementById('timeCurrent');
 const timeTotal = document.getElementById('timeTotal');
 const player = document.getElementById('player');
 
-// "My Way" (2008 Remastered) runs 4:36 — used as the initial/fallback
-// display until the browser confirms the real duration from metadata.
 const FALLBACK_DURATION_SECONDS = 4 * 60 + 36;
 
 let playing = false;
