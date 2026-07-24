@@ -32,7 +32,7 @@ function drawMatrix(){
   ctx.fillStyle = "rgba(29, 213, 26, 0.94)";
 
   for(let i = 0; i < drops.length; i++){
-    if(Math.random() > 0.55){ drops[i]++; continue; } // sparsify + slow down
+    if(Math.random() > 0.55){ drops[i]++; continue; }
 
     const text = glyphs[Math.floor(Math.random() * glyphs.length)];
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -51,11 +51,11 @@ if(!reduceMotion){
 const termBody = document.getElementById('terminalBody');
 
 const termLines = [
-  { text: "root@angelcasas:~$", type: "cmd" },
+  { text: "modding@ghericasas:~$", type: "cmd" },
   { text: "just a child learning new things every day", type: "out" },
   { text: "", type: "out" },
-  { text: "root@angelcasas:~$ about me:", type: "cmd" },
-  { text: "rol      : Developer · Cybersecurity", type: "out" },
+  { text: "modding@ghericasas:~$ about me:", type: "cmd" },
+  { text: "rol      : Student · Developer · Cybersecurity", type: "out" },
   { text: "estado   : [ONLINE]", type: "out" }
 ];
 
