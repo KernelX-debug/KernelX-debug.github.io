@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0d0e15">
   <meta name="mailbox-api" content="https://angel-anonymous-mailbox.kernelx-debug.workers.dev">
-  <meta name="mailbox-api" content="">
   <meta name="description" content="El portafolio de Angel: proyectos, juegos, anime y unas rolitas de Deftones para quedarse un rato.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Angel — Portafolio personal">
@@ -38,6 +37,7 @@
         <a href="#side-quests">Fuera de juego</a>
         <a href="#music">Sexo</a>
         <a href="#mailbox">Buzón</a>
+        <a href="#dino-lab">Dino Lab</a>
         <a href="#connect">Contacto</a>
       </nav>
 
@@ -58,7 +58,8 @@
       <a href="#side-quests"><span>03</span>Fuera de juego</a>
       <a href="#music"><span>04</span>Sexo</a>
       <a href="#mailbox"><span>05</span>Buzón</a>
-      <a href="#connect"><span>06</span>Contacto</a>
+      <a href="#dino-lab"><span>06</span>Dino Lab</a>
+      <a href="#connect"><span>07</span>Contacto</a>
     </nav>
   </header>
 
@@ -333,9 +334,89 @@
       </div>
     </section>
 
+    <section class="dino-lab section" id="dino-lab" aria-labelledby="dino-title">
+      <div class="shell">
+        <div class="section-kicker reveal"><span>06</span><span>// galería dino-picasso</span></div>
+        <div class="dino-heading reveal">
+          <div>
+            <p class="eyebrow">DINO LAB / dibujos anónimos</p>
+            <h2 id="dino-title">Dibuja un dino.<br><span>O algo parecido.</span></h2>
+          </div>
+          <p>Tienes un boceto para empezar; puedes borrarlo, rasguñarlo o quemarlo. Se publica al instante. La evolución, bueno, ya veremos.</p>
+        </div>
+
+        <div class="dino-workbench reveal">
+          <div class="dino-studio">
+            <div class="dino-studio-bar"><span><i class="dino-live-dot" aria-hidden="true"></i> LIENZO / 001</span><span>800 × 500 PX <i data-lucide="scan-line" aria-hidden="true"></i></span></div>
+            <div class="dino-paper">
+              <canvas id="dino-canvas" width="800" height="500" aria-label="Lienzo de dibujo de dinosaurios; usa el ratón, un lápiz digital o el dedo">Tu navegador no admite el lienzo interactivo.</canvas>
+            </div>
+            <p class="dino-paper-note"><span>✳</span> Dibuja con el dedo o el mouse. No hace falta saber anatomía jurásica.</p>
+          </div>
+
+          <div class="dino-controls">
+            <div class="dino-controls-head"><span>01 / KIT DE INICIO</span><i data-lucide="pencil-line" aria-hidden="true"></i></div>
+            <div class="dino-tool-group">
+              <h3>Elige el color de tu crayón</h3>
+              <div class="dino-palette" role="group" aria-label="Color del crayón">
+                <button type="button" class="dino-color" data-dino-color="#112d5b" style="--swatch:#112d5b" aria-label="Azul noche" aria-pressed="false"></button>
+                <button type="button" class="dino-color is-active" data-dino-color="#00a7c8" style="--swatch:#00a7c8" aria-label="Celeste" aria-pressed="true"></button>
+                <button type="button" class="dino-color" data-dino-color="#ff2a74" style="--swatch:#ff2a74" aria-label="Rosa" aria-pressed="false"></button>
+                <button type="button" class="dino-color" data-dino-color="#e8a300" style="--swatch:#e8a300" aria-label="Oro" aria-pressed="false"></button>
+                <button type="button" class="dino-color" data-dino-color="#8b62d9" style="--swatch:#8b62d9" aria-label="Violeta" aria-pressed="false"></button>
+                <button type="button" class="dino-color" data-dino-color="#168061" style="--swatch:#168061" aria-label="Verde" aria-pressed="false"></button>
+                <button type="button" class="dino-color" data-dino-color="#111111" style="--swatch:#111111" aria-label="Negro" aria-pressed="false"></button>
+              </div>
+            </div>
+            <div class="dino-tool-group">
+              <h3>Grosor</h3>
+              <div class="dino-size-row" role="group" aria-label="Grosor del crayón">
+                <button type="button" class="dino-size is-active" data-dino-width="2" aria-pressed="true"><span class="dino-line dino-line-thin"></span> Fino</button>
+                <button type="button" class="dino-size" data-dino-width="9" aria-pressed="false"><span class="dino-line dino-line-thick"></span> Grueso</button>
+              </div>
+            </div>
+            <div class="dino-actions" role="group" aria-label="Editar dibujo">
+              <button type="button" id="dino-eraser" aria-pressed="false"><i data-lucide="eraser" aria-hidden="true"></i> Borrador</button>
+              <button type="button" id="dino-undo"><i data-lucide="undo-2" aria-hidden="true"></i> Deshacer</button>
+              <button type="button" id="dino-reset"><i data-lucide="rotate-ccw" aria-hidden="true"></i> Boceto</button>
+              <button type="button" id="dino-clear"><i data-lucide="trash-2" aria-hidden="true"></i> En blanco</button>
+            </div>
+            <form id="dino-form" class="dino-form">
+              <label for="dino-name">Firma tu criatura</label>
+              <div class="dino-name-row">
+                <select id="dino-prefix" name="prefix" aria-label="Prefijo del nombre"><option value="Mr.">Mr.</option><option value="Mrs.">Mrs.</option></select>
+                <input id="dino-name" name="name" type="text" minlength="2" maxlength="20" placeholder="¿Qué nombre le das?" autocomplete="off" required>
+              </div>
+              <button class="button button-primary" id="dino-submit" type="submit" disabled>Colgar en el muro <i data-lucide="send" aria-hidden="true"></i></button>
+              <p id="dino-status" class="dino-status" role="status" aria-live="polite">Preparando el laboratorio…</p>
+            </form>
+          </div>
+        </div>
+
+        <div class="dino-gallery-heading reveal">
+          <div><p class="eyebrow">Galería anónima</p><h3>El muro fósil<span aria-hidden="true">↗</span></h3></div>
+          <div class="dino-gallery-side"><p>Obras originales. Algunas probablemente desafían a la paleontología.</p><button id="dino-refresh" type="button"><i data-lucide="refresh-cw" aria-hidden="true"></i> Actualizar muro</button></div>
+        </div>
+        <p id="dino-gallery-status" class="dino-gallery-status" role="status" aria-live="polite">Cargando criaturas…</p>
+        <div id="dino-gallery" class="dino-gallery" aria-live="polite"></div>
+        <button id="dino-more" class="dino-more" type="button" hidden>Ver más criaturas <i data-lucide="arrow-down" aria-hidden="true"></i></button>
+        <details class="dino-admin">
+          <summary>Control del museo</summary>
+          <div class="dino-admin-inner">
+            <label for="dino-admin-token">Clave de administración</label>
+            <div class="dino-admin-auth">
+              <input id="dino-admin-token" type="password" autocomplete="off" placeholder="Solo para el dueño">
+              <button type="button" id="dino-admin-open">Activar moderación</button>
+            </div>
+            <p id="dino-admin-status" role="status" aria-live="polite">La clave solo vive en esta pestaña.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
     <section class="connect section" id="connect" aria-labelledby="connect-title">
       <div class="shell">
-        <div class="section-kicker reveal"><span>06</span><span>// deja una señal</span></div>
+        <div class="section-kicker reveal"><span>07</span><span>// deja una señal</span></div>
         <div class="connect-layout">
           <div class="connect-copy reveal">
             <p class="eyebrow">Contacto</p>
@@ -367,5 +448,6 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script src="script.js"></script>
   <script src="mailbox.js"></script>
+  <script src="dino.js"></script>
 </body>
 </html>
