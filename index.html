@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="es" data-faction="villain">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d0e15">
+  <meta name="mailbox-api" content="">
+  <meta name="description" content="El portafolio de Angel: proyectos, juegos, anime y unas rolitas de Deftones para quedarse un rato.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Angel — Portafolio personal">
+  <meta property="og:description" content="Proyectos, intereses y pequeñas obsesiones mias.">
+  <meta property="og:type" content="website">
+  <title>Angel — Portafolio personal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23071522'/%3E%3Cpath d='M16 34c8-12 24-12 32 0-8 12-24 12-32 0Z' fill='none' stroke='%236ee7ff' stroke-width='5'/%3E%3Ccircle cx='32' cy='34' r='5' fill='%23ffd75e'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <div class="pointer-glow" id="pointer-glow" aria-hidden="true"></div>
+  <canvas class="aura-canvas" id="aura-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="top">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="Ir al inicio">
+        <span class="brand-mark brand-avatar" aria-hidden="true"><img src="profile_image.gif" alt="" width="64" height="64"></span>
+        <span class="brand-copy"><strong>ANGEL</strong><small>personal universe</small></span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#about">Habilidades</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#side-quests">Fuera de juego</a>
+        <a href="#music">Sexo</a>
+        <a href="#mailbox">Buzón</a>
+        <a href="#connect">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-button" id="theme-toggle" type="button" aria-pressed="false" aria-label="Cambiar a facción héroe">
+          <span class="theme-dot" aria-hidden="true"></span>
+          <span id="theme-label">Villano</span>
+        </button>
+        <button class="menu-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menú">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil" hidden>
+      <a href="#about"><span>01</span>Habilidades</a>
+      <a href="#projects"><span>02</span>Proyectos</a>
+      <a href="#side-quests"><span>03</span>Fuera de juego</a>
+      <a href="#music"><span>04</span>Sexo</a>
+      <a href="#mailbox"><span>05</span>Buzón</a>
+      <a href="#connect"><span>06</span>Contacto</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="status-pill hero-enter">
+          <span class="status-light" aria-hidden="true"></span>
+          SAVE FILE 001 · LIMA, PE
+        </div>
+        <p class="eyebrow hero-enter delay-1">Portafolio personal / capítulo 01</p>
+        <h1 id="hero-title" class="hero-enter delay-2">Hola, soy Angel.<br><span>Un nerd más.</span></h1>
+        <p class="hero-lede hero-enter delay-3">Estudio Ingeniería de software e informática. Entre proyectos, videojuegos, anime y música, voy armando mi propio universo. Sin cinemática obligatoria.</p>
+        <div class="hero-actions hero-enter delay-4">
+          <a class="button button-primary button-glitch" href="#projects" data-text="Explorar portafolio" aria-label="Explorar portafolio">Explorar portafolio <i data-lucide="arrow-down-right"></i></a>
+          <a class="text-link" href="#music">Poner música <i data-lucide="arrow-right"></i></a>
+        </div>
+        <div class="hero-meta hero-enter delay-4" aria-label="Datos breves">
+          <span><b>01</b> hago proyectos</span>
+          <span><b>02</b> juego videojuegos</span>
+          <span><b>03</b> repito canciones</span>
+        </div>
+      </div>
+
+      <div class="hero-visual hero-enter delay-2" id="hero-visual" aria-label="Ilustración anime en tonos celestes">
+        <div class="visual-window">
+          <div class="window-bar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span>my_girlfriend_btw.JPG</span>
+            <span>01 — 24</span>
+          </div>
+          <div class="portrait-stage">
+            <div class="tiny-checklist" aria-hidden="true">
+              <span>today.log</span>
+              <span>✓ construir algo</span>
+              <span>× conseguir novia</span>
+              <span>✓ una raid más</span>
+            </div>
+            <img src="57619d8594d8f155554f51ea.png" alt="Personaje anime de cabello celeste" width="700" height="743">
+            <div class="visual-stamp" aria-hidden="true"><span>青</span>BLUE<br>MOOD</div>
+            <span class="crosshair crosshair-one" aria-hidden="true"></span>
+            <span class="crosshair crosshair-two" aria-hidden="true"></span>
+            <button class="avatar-switch" id="avatar-switch" type="button" aria-pressed="false" aria-label="Activar aura del avatar"><i data-lucide="sparkles"></i><span>ACTIVAR AURA</span></button>
+          </div>
+          <div class="window-footer"><span>no thoughts, just vibes</span><span>signal stable</span></div>
+        </div>
+        <div class="orbit-note" aria-hidden="true">夢 / bastante serio, claramente</div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>PORTAFOLIO</span><i>✦</i><span>POKEMON</span><i>✦</i><span>ANIME</span><i>✦</i><span>MUSIC</span><i>✦</i><span>SIDE PROJECTS</span><i>✦</i>
+        <span>PORTAFOLIO</span><i>✦</i><span>POKEMON</span><i>✦</i><span>ANIME</span><i>✦</i><span>MUSIC</span><i>✦</i><span>SIDE PROJECTS</span><i>✦</i>
+      </div>
+    </div>
+
+    <section class="about section shell" id="about" aria-labelledby="about-title">
+      <div class="section-kicker reveal"><span>01</span><span>// ficha de personaje</span></div>
+      <div class="about-grid">
+        <div class="about-intro reveal">
+          <p class="eyebrow">Habilidades / características</p>
+          <h2 id="about-title">Stats reales.<br><span>Sin power-up falso.</span></h2>
+          <p>Curiosidad, proyectos propios y una sospechosa capacidad de insistir hasta que algo funcione. Muchos de mis projectos aún están en desarrollo...</p>
+        </div>
+
+        <div class="about-bento reveal">
+          <article class="bento-card bento-wide">
+            <span class="card-label">01 / RESOLVER</span>
+            <p>Aprender → romper → arreglar → fingir que siempre fue el plan.</p>
+            <i data-lucide="refresh-cw" aria-hidden="true"></i>
+          </article>
+          <article class="bento-card bento-cyan">
+            <span class="card-label">02 / EXPLORAR</span>
+            <strong>Lima, Perú</strong>
+            <small>Ideas nuevas + salidas con mis patas.</small>
+          </article>
+          <article class="bento-card bento-yellow">
+            <span class="card-label">03 / IMPROVISAR</span>
+            <p id="mood-copy">Hoy toca construir algo innecesariamente bonito.</p>
+            <button type="button" id="shuffle-mood">otra excusa <i data-lucide="shuffle"></i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects section" id="projects" aria-labelledby="projects-title">
+      <div class="shell">
+        <div class="projects-heading reveal">
+          <div>
+            <div class="section-kicker"><span>02</span><span>// cosas que sí terminé</span></div>
+            <p class="eyebrow">Selected work</p>
+            <h2 id="projects-title">Dos proyectos.<br><span>Cero relleno.</span></h2>
+          </div>
+          <div class="projects-intro">
+            <p>Uno nació por mis gustos por Pokémon. El otro, porque calcular notas a mano es una falta de respeto en EEGGCC.</p>
+            <a class="text-link" href="https://github.com/KernelX-debug" target="_blank" rel="noreferrer">Ver todo en GitHub <i data-lucide="arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <a class="project-card project-lucario reveal" id="lucario-project" href="https://github.com/KernelX-debug/Discord-Bot_Lucario_Moonaniphp" target="_blank" rel="noreferrer" data-tilt aria-label="Abrir Lucario Moonani Discord Bot en GitHub">
+            <div class="project-media">
+              <span class="project-number">01 / Python + Endpoints + Discord</span>
+              <img src="800px-Lucario.png" alt="Lucario, personaje principal del proyecto" width="800" height="739">
+              <span class="image-caption">wild project appeared!</span>
+            </div>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>Lucario · Moonani Bot</h3>
+                <i data-lucide="arrow-up-right"></i>
+              </div>
+              <p>Encuentra spawns, raids, misiones y PvP; luego manda coordenadas y alertas a Discord. Sí, hace bastante más que decir “ping”. Open Source y Gratis.</p>
+              <div class="project-tags"><span>Python</span><span>Discord API</span><span>Pokémon GO</span></div>
+            </div>
+          </a>
+
+          <a class="project-card project-pucp reveal" id="pucp-project" href="https://github.com/KernelX-debug/grade-calculator-pucp" target="_blank" rel="noreferrer" data-tilt aria-label="Abrir Grade Calculator PUCP en GitHub">
+            <div class="project-media">
+              <span class="project-number">02 / Javascript + Capacitor + Android + Web</span>
+              <div class="pucp-logo-wrap">
+                <img src="Copia-de-Imagotipo-PUCP-alta_resolucion.png" alt="Logo de la Pontificia Universidad Católica del Perú" width="2239" height="1079">
+              </div>
+              <span class="image-caption">las fórmulas no perdonan</span>
+            </div>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>Grade Calculator PUCP</h3>
+                <i data-lucide="arrow-up-right"></i>
+              </div>
+              <p>Un aporte a mi universidad. Calcula notas finales, descartes y cuánto necesitas para aprobar. Porque sufrir por el curso ya era suficiente. Aplicable para los cursos de la facultad de Ingeniería de la PUCP</p>
+              <div class="project-tags"><span>JavaScript</span><span>Capacitor</span><span>Android</span><span>Web</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="side-quests section shell" id="side-quests" aria-labelledby="side-title">
+      <div class="section-kicker reveal"><span>03</span><span>// fuera de horario</span></div>
+      <div class="side-heading reveal">
+        <div>
+          <p class="eyebrow">Side quests</p>
+          <h2 id="side-title">También tengo<br><span>otros temas.</span></h2>
+        </div>
+        <p>Debo tocar pasto. Eso me dijeron.</p>
+      </div>
+
+      <div class="interest-grid">
+        <article class="interest-card interest-pokemon reveal">
+          <img class="interest-art pokemon-art" src="pokemon-logo-clean.png" alt="" loading="lazy">
+          <div class="interest-icon"><i data-lucide="map-pin"></i></div>
+          <span>01 / EN LA CALLE</span>
+          <h3>Pokémon GO</h3>
+          <p>Fan desde sus inicios. Camino más por un Pokémon que por cardio jsjs. Prioridades.</p>
+          <small>team: depende del día</small>
+        </article>
+        <article class="interest-card interest-anime reveal">
+          <img class="interest-art anime-art" src="anime-blue-clean.png" alt="" loading="lazy">
+          <div class="interest-icon"><i data-lucide="sparkles"></i></div>
+          <span>02 / EN LA PANTALLA</span>
+          <h3>Anime</h3>
+          <p>Sí, la portada era una pista bastante sutil.</p>
+          <small>opening nunca se salta</small>
+        </article>
+        <article class="interest-card interest-music reveal">
+          <img class="interest-art music-art" src="Violent Vira.png" alt="" loading="lazy">
+          <div class="interest-icon"><i data-lucide="headphones"></i></div>
+          <span>03 / EN LOOP</span>
+          <h3>Música</h3>
+          <p>Hard rock, metal & songs que se quedan en loop.</p>
+          <small>volumen razonable y headbang al fallo</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="music-section section" id="music" aria-labelledby="music-title">
+      <div class="shell">
+        <div class="section-kicker reveal"><span>04</span><span>// banda sonora personal</span></div>
+        <div class="music-heading reveal">
+          <div>
+            <p class="eyebrow">Mi soundtrack</p>
+            <h2 id="music-title">Top 3<br><span>Deftones Songs.</span></h2>
+          </div>
+          <p>Tres bellas rolas. Eres fan de Superheaven o Deftones?</p>
+        </div>
+
+        <div class="music-console reveal">
+          <div class="music-player">
+            <div class="disc-art" aria-hidden="true"><span>ANGEL<br><b>FM</b></span><i></i></div>
+            <div class="player-content">
+              <div class="player-header"><span>NOW PLAYING / 001</span><span class="player-signal">● IS THIS HEAVEN?</span></div>
+              <div class="player-title-wrap">
+                <p>DEFTONES · TOP 3</p>
+                <h3 id="now-playing">Elige una canción</h3>
+                <span id="player-message" role="status" aria-live="polite">La playlist espera tu señal.</span>
+              </div>
+              <div class="player-timeline">
+                <span id="current-time">0:00</span>
+                <input id="track-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Posición de la canción" disabled>
+                <span id="total-time">0:00</span>
+              </div>
+              <div class="player-actions">
+                <button type="button" class="player-main-button" id="main-play" aria-label="Reproducir canción seleccionada"><i data-lucide="play"></i><span>PLAY / PAUSE</span></button>
+                <span>Usa audífonos. Confía.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="track-list" aria-label="Top 3 canciones de Deftones">
+            <button type="button" class="track-row" data-track="0" data-src="Deftones - 976-EVIL (Subtitulada en Español) - scornbox (youtube).mp3" data-title="976-EVIL" aria-label="Reproducir 976-EVIL">
+              <span class="track-index">01</span><span class="track-name"><strong>976-EVIL</strong><small>Deftones</small></span><span class="track-state">PLAY</span><i data-lucide="play" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="track-row" data-track="1" data-src="Deftones - Romantic Dreams (Subtitulada en Español) - scornbox (youtube).mp3" data-title="Romantic Dreams" aria-label="Reproducir Romantic Dreams">
+              <span class="track-index">02</span><span class="track-name"><strong>Romantic Dreams</strong><small>Deftones</small></span><span class="track-state">PLAY</span><i data-lucide="play" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="track-row" data-track="2" data-src="Deftones - You've Seen The Butcher (Subtitulada en Español) - scornbox (youtube).mp3" data-title="You've Seen The Butcher" aria-label="Reproducir You've Seen The Butcher">
+              <span class="track-index">03</span><span class="track-name"><strong>You've Seen The Butcher</strong><small>Deftones</small></span><span class="track-state">PLAY</span><i data-lucide="play" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <audio id="audio-player" preload="none"></audio>
+        <noscript><p class="audio-fallback">Activa JavaScript para usar el reproductor interactivo.</p></noscript>
+      </div>
+    </section>
+
+    <section class="mailbox section" id="mailbox" aria-labelledby="mailbox-title">
+      <div class="shell">
+        <div class="section-kicker reveal"><span>05</span><span>// notas bajo la puerta</span></div>
+        <div class="mailbox-heading reveal">
+          <div>
+            <p class="eyebrow">Buzón anónimo</p>
+            <h2 id="mailbox-title">Pregúntame<br><span>lo que sea.</span></h2>
+          </div>
+          <p>Preguntas, confesiones o comentarios. Sin nombre ni cuenta. Completamente anónimo.</p>
+        </div>
+        <div class="mailbox-grid">
+          <div class="mailbox-write reveal">
+            <div class="mailbox-note-top"><span>HOJA 001 / ANÓNIMO</span><span>✦</span></div>
+            <div class="mailbox-cat">
+              <img src="cat-cat-pokerface.png" alt="Gato con expresión impasible, guardián del buzón" width="498" height="381" loading="lazy">
+              <span>el gato no juzga. creo..</span>
+            </div>
+            <form id="mailbox-form">
+              <label for="mailbox-question">Deja tu papelito</label>
+              <textarea id="mailbox-question" name="question" minlength="10" maxlength="500" rows="5" placeholder="¿Tienes algo que decir?" required></textarea>
+              <div class="mailbox-form-meta"><span>Sin datos personales, porfa.</span><output id="mailbox-count" for="mailbox-question">0 / 500</output></div>
+              <button class="button button-primary" id="mailbox-submit" type="submit" disabled>Enviar anónimo <i data-lucide="send"></i></button>
+              <p id="mailbox-status" class="mailbox-status" role="status" aria-live="polite">El buzón se comunicará conmigo al conectar el servicio cloudfare.</p>
+            </form>
+          </div>
+          <div class="mailbox-board reveal">
+            <div class="board-masthead"><span>NEW YORK TIMES</span><small>EDICIÓN: RESPUESTAS PÚBLICAS</small></div>
+            <div class="board-title"><span>EL TABLÓN</span><i data-lucide="pin" aria-hidden="true"></i></div>
+            <div id="mailbox-list" class="mailbox-list" aria-live="polite">
+              <p class="mailbox-empty">Todavía no hay papelitos publicados. Qué sospechoso silencio.</p>
+            </div>
+            <details class="mailbox-admin" id="mailbox-admin">
+              <summary>Acceso del dueño</summary>
+              <div class="admin-body">
+                <label for="mailbox-token">Clave de administración</label>
+                <div class="admin-auth">
+                  <input id="mailbox-token" type="password" autocomplete="off" placeholder="Solo para el administrador">
+                  <button id="mailbox-admin-load" type="button">Abrir bandeja</button>
+                </div>
+                <p id="mailbox-admin-status" role="status" aria-live="polite">La clave no se guarda en este dispositivo.</p>
+                <div id="mailbox-pending" class="mailbox-pending"></div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="connect section" id="connect" aria-labelledby="connect-title">
+      <div class="shell">
+        <div class="section-kicker reveal"><span>06</span><span>// deja una señal</span></div>
+        <div class="connect-layout">
+          <div class="connect-copy reveal">
+            <p class="eyebrow">Contacto</p>
+            <h2 id="connect-title">¿Una idea rara?<br><span>Mejor todavía.</span></h2>
+            <p>Proyectos, preguntas o una recomendación musical específica.</p>
+            <a class="button button-primary" href="mailto:ghericasas@gmail.com">Escríbeme <i data-lucide="send"></i></a>
+          </div>
+
+          <div class="social-list reveal" aria-label="Redes sociales">
+            <a href="https://instagram.com/ghericasas_f1rst" target="_blank" rel="noreferrer"><span><small>01</small>Instagram</span><i data-lucide="arrow-up-right"></i></a>
+            <a href="mailto:ghericasas@gmail.com"><span><small>02</small>Gmail</span><i data-lucide="arrow-up-right"></i></a>
+            <a href="https://www.tiktok.com/@ghericasas" target="_blank" rel="noreferrer"><span><small>03</small>TikTok</span><i data-lucide="arrow-up-right"></i></a>
+            <a href="https://www.youtube.com/@angelcasas5557" target="_blank" rel="noreferrer"><span><small>04</small>YouTube</span><i data-lucide="arrow-up-right"></i></a>
+            <a href="https://www.reddit.com/user/No_Length8779/" target="_blank" rel="noreferrer"><span><small>05</small>Reddit</span><i data-lucide="arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand footer-brand" href="#top"><span class="brand-mark brand-avatar" aria-hidden="true"><img src="profile_image.gif" alt="" width="64" height="64"></span><span class="brand-copy"><strong>ANGEL</strong><small>shoegaze at 2am</small></span></a>
+      <p>Angel Casas · <span id="year"></span></p>
+      <a href="#top">Volver arriba <i data-lucide="arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="script.js"></script>
+  <script src="mailbox.js"></script>
+</body>
+</html>
