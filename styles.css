@@ -711,3 +711,127 @@ h2 { font-size: clamp(3.2rem, 6vw, 5.8rem); }
   .board-masthead { align-items: flex-start; flex-direction: column; gap: .25rem; }
   .admin-auth { flex-direction: column; }
 }
+
+/* ACT IV — the community's extremely unofficial dinosaur museum */
+.dino-lab {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 3px solid #000;
+  background: radial-gradient(circle at 88% 7%, rgba(0, 240, 255, .15), transparent 29rem),
+    radial-gradient(circle at 5% 72%, rgba(255, 42, 116, .09), transparent 26rem), var(--bg-deep);
+}
+.dino-lab::before {
+  content: 'RAWR'; position: absolute; z-index: -1; top: 2rem; right: -2vw;
+  color: transparent; font: 900 clamp(9rem, 24vw, 24rem)/.8 var(--font);
+  letter-spacing: -.1em; -webkit-text-stroke: 2px var(--line); pointer-events: none;
+}
+.dino-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .4fr); align-items: end; gap: 3rem; margin-bottom: 3.5rem; }
+.dino-heading .eyebrow { margin-bottom: 1rem; }
+.dino-heading h2 span { color: var(--cyan); }
+.dino-heading > p { max-width: 340px; color: var(--muted); }
+.dino-workbench { display: grid; grid-template-columns: minmax(0, 1.38fr) minmax(310px, .62fr); gap: 1.4rem; align-items: stretch; }
+.dino-studio, .dino-controls { min-width: 0; border: 3px solid #000; }
+.dino-studio { padding: 1rem; background: #15243a; box-shadow: 11px 11px 0 var(--accent-cyan); }
+.dino-studio-bar { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: .15rem .2rem .9rem; color: #dcfaff; font: 500 .7rem var(--mono); letter-spacing: .08em; }
+.dino-studio-bar span { display: inline-flex; align-items: center; gap: .5rem; }
+.dino-studio-bar svg { width: .9rem; height: .9rem; color: var(--accent-cyan); }
+.dino-live-dot { width: .55rem; height: .55rem; border-radius: 50%; background: var(--accent-pink); box-shadow: 0 0 0 3px rgba(255, 42, 116, .2); animation: dinoPulse 2.4s ease-in-out infinite; }
+.dino-paper { position: relative; overflow: hidden; border: 3px solid #000; background: #fff; box-shadow: inset 0 0 0 1px #e0e7eb; }
+.dino-paper::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 30px rgba(30, 57, 89, .06); }
+#dino-canvas { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; background: #fff; touch-action: none; cursor: crosshair; }
+#dino-canvas:focus-visible { outline: 4px solid var(--accent-pink); outline-offset: -4px; }
+.dino-paper-note { display: flex; gap: .6rem; align-items: flex-start; margin-top: .9rem; color: #c0d5e8; font: .72rem/1.5 var(--mono); }
+.dino-paper-note span { color: var(--accent-gold); font-size: 1rem; line-height: 1; }
+.dino-controls { display: flex; flex-direction: column; padding: 1.3rem; background: #f3faff; color: #152337; box-shadow: 11px 11px 0 var(--accent-pink); }
+.dino-controls-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 3px solid #162235; font: 500 .75rem var(--mono); letter-spacing: .08em; }
+.dino-controls-head svg { width: 1.15rem; height: 1.15rem; color: #087f9c; }
+.dino-tool-group { margin-top: 1.3rem; }
+.dino-tool-group h3, .dino-form label { margin-bottom: .7rem; font: 900 .78rem var(--font); letter-spacing: .05em; text-transform: uppercase; }
+.dino-palette { display: flex; flex-wrap: wrap; gap: .65rem; }
+.dino-color { position: relative; width: 2.55rem; height: 2.55rem; padding: 0; border: 3px solid #121b2b; border-radius: 0; background: var(--swatch); cursor: pointer; transition: transform .25s var(--ease-elastic), box-shadow .25s ease; }
+.dino-color:hover, .dino-color.is-active { transform: translateY(-3px); box-shadow: 3px 4px 0 #111, 6px 7px 0 var(--accent-cyan); }
+.dino-color.is-active::after { content: '✓'; position: absolute; inset: 0; display: grid; place-items: center; color: white; font: 900 1rem var(--font); text-shadow: 0 1px 2px #111; }
+.dino-size-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+.dino-size, .dino-actions button, .dino-admin-auth button { min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; gap: .55rem; padding: .5rem .7rem; border: 2px solid #152337; background: white; color: #152337; font: 900 .72rem var(--font); text-transform: uppercase; cursor: pointer; transition: transform .25s var(--ease-elastic), background .2s ease, box-shadow .2s ease; }
+.dino-size:hover, .dino-actions button:hover, .dino-admin-auth button:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #152337; }
+.dino-size.is-active, .dino-actions button.is-active { background: var(--accent-gold); }
+.dino-line { display: block; width: 1.4rem; border-radius: 99px; background: currentColor; }
+.dino-line-thin { height: 2px; }
+.dino-line-thick { height: 8px; }
+.dino-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin-top: 1.4rem; }
+.dino-actions button { justify-content: flex-start; min-width: 0; }
+.dino-actions svg { width: 1rem; height: 1rem; flex: none; }
+.dino-form { display: grid; gap: .75rem; margin-top: auto; padding-top: 1.5rem; }
+.dino-name-row { display: flex; gap: .55rem; }
+.dino-name-row select, .dino-name-row input, .dino-admin-auth input { min-width: 0; min-height: 3rem; padding: .55rem .7rem; border: 3px solid #152337; border-radius: 0; background: #fff; color: #152337; font: 700 .9rem var(--font); }
+.dino-name-row select { flex: 0 0 5.2rem; cursor: pointer; }
+.dino-name-row input { flex: 1; width: 100%; }
+.dino-form .button { width: 100%; cursor: pointer; }
+.dino-form .button:disabled { cursor: not-allowed; opacity: .55; box-shadow: 4px 4px 0 #777; }
+.dino-status { min-height: 2.5rem; color: #496077; font: .74rem/1.4 var(--mono); }
+.dino-status.is-error, .dino-gallery-status.is-error { color: #b42155; }
+.dino-status.is-success { color: #08685c; }
+.dino-gallery-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin: clamp(5rem, 9vw, 8rem) 0 1.5rem; }
+.dino-gallery-heading .eyebrow { margin-bottom: .6rem; }
+.dino-gallery-heading h3 { font: 900 clamp(2rem, 5vw, 3.4rem)/1 var(--font); letter-spacing: -.05em; text-transform: uppercase; }
+.dino-gallery-heading h3 span { display: inline-block; margin-left: .3rem; color: var(--accent-pink); transition: transform .3s var(--ease-elastic); }
+.dino-gallery-heading:hover h3 span { transform: translate(5px, -5px); }
+.dino-gallery-side { display: grid; justify-items: start; gap: .8rem; max-width: 325px; }
+.dino-gallery-side p { color: var(--muted); }
+.dino-gallery-side button { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem 0; border: 0; border-bottom: 2px solid var(--cyan); background: transparent; color: var(--text); font: 900 .72rem var(--font); text-transform: uppercase; cursor: pointer; }
+.dino-gallery-side button:hover { color: var(--cyan); }
+.dino-gallery-side svg { width: .95rem; height: .95rem; }
+.dino-gallery-status { min-height: 1.8rem; margin-bottom: 1rem; color: var(--muted); font: .73rem var(--mono); }
+.dino-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.3rem; }
+.dino-gallery-card { min-width: 0; overflow: hidden; border: 3px solid #000; background: #fff; color: #152337; box-shadow: 7px 7px 0 var(--accent-cyan); transition: transform .4s var(--ease-elastic), box-shadow .3s ease; }
+.dino-gallery-card:nth-child(3n+2) { box-shadow: 7px 7px 0 var(--accent-gold); }
+.dino-gallery-card:nth-child(3n) { box-shadow: 7px 7px 0 var(--accent-pink); }
+.dino-gallery-card:hover { transform: translateY(-7px) rotate(-1deg); box-shadow: 11px 13px 0 var(--accent-pink); }
+.dino-gallery-art { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; background: #fff; }
+.dino-gallery-card-meta { display: flex; align-items: center; justify-content: space-between; gap: .7rem; padding: .8rem .9rem; border-top: 3px solid #000; background: #f3faff; }
+.dino-gallery-name { min-width: 0; overflow-wrap: anywhere; font: 900 .9rem var(--font); }
+.dino-gallery-date { flex: none; color: #536274; font: .63rem var(--mono); }
+.dino-delete { display: block; width: calc(100% - 1.5rem); margin: 0 .75rem .75rem; padding: .5rem; border: 2px solid #000; background: #ff9ab9; color: #17111c; font: 900 .7rem var(--font); text-transform: uppercase; cursor: pointer; }
+.dino-delete:hover { background: var(--accent-pink); }
+.dino-gallery-empty { grid-column: 1 / -1; padding: 2.5rem 1rem; border: 2px dashed var(--line-strong); color: var(--muted); text-align: center; }
+.dino-more { min-height: 2.8rem; display: inline-flex; align-items: center; gap: .5rem; margin-top: 2rem; padding: .45rem .8rem; border: 3px solid #000; background: var(--accent-gold); color: #171305; box-shadow: 5px 5px 0 var(--accent-pink); font: 900 .75rem var(--font); text-transform: uppercase; cursor: pointer; }
+.dino-more:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--accent-cyan); }
+.dino-more:disabled { opacity: .6; cursor: wait; }
+.dino-more[hidden] { display: none; }
+.dino-admin { margin-top: 2.4rem; padding-top: .9rem; border-top: 2px solid var(--line-strong); }
+.dino-admin summary { width: max-content; max-width: 100%; color: var(--muted); font: .73rem var(--mono); cursor: pointer; }
+.dino-admin-inner { display: grid; gap: .7rem; width: min(100%, 500px); margin-top: .9rem; padding: 1rem; border: 3px solid #000; background: #f3faff; color: #152337; }
+.dino-admin-inner label { font: 900 .75rem var(--font); text-transform: uppercase; }
+.dino-admin-auth { display: flex; gap: .55rem; }
+.dino-admin-auth input { flex: 1; }
+.dino-admin-auth button { background: var(--accent-cyan); }
+.dino-admin-inner p { color: #526274; font: .7rem/1.5 var(--mono); }
+@keyframes dinoPulse { 50% { opacity: .5; box-shadow: 0 0 0 6px rgba(255, 42, 116, .08); } }
+@media (max-width: 1000px) {
+  .dino-workbench { grid-template-columns: minmax(0, 1fr); }
+  .dino-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; }
+  .dino-controls-head, .dino-actions, .dino-form { grid-column: 1 / -1; }
+  .dino-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .dino-heading { grid-template-columns: 1fr; gap: 1.25rem; }
+  .dino-heading > p { max-width: 100%; }
+  .dino-controls { display: flex; }
+  .dino-gallery-heading { align-items: start; flex-direction: column; }
+  .dino-gallery { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .dino-studio { padding: .55rem; box-shadow: 6px 6px 0 var(--accent-cyan); }
+  .dino-studio-bar { font-size: .58rem; }
+  .dino-studio-bar svg { display: none; }
+  .dino-paper-note { padding-inline: .3rem; }
+  .dino-controls { padding: 1rem; box-shadow: 6px 6px 0 var(--accent-pink); }
+  .dino-color { width: 2.45rem; height: 2.45rem; }
+  .dino-gallery-card-meta { align-items: flex-start; }
+  .dino-admin-auth { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dino-live-dot { animation: none; }
+  .dino-gallery-card, .dino-color, .dino-size, .dino-actions button { transition: none; }
+}
