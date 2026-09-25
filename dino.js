@@ -3,9 +3,9 @@
 
   const WIDTH = 800;
   const HEIGHT = 500;
-  const MAX_STROKES = 80;
-  const MAX_POINTS = 2400;
-  const MAX_POINTS_PER_STROKE = 160;
+  const MAX_STROKES = 250;
+  const MAX_POINTS = 6000;
+  const MAX_POINTS_PER_STROKE = 400;
   const COLORS = /^#[0-9a-f]{6}$/i;
   const NAME = /^[\p{L}\p{N}]+(?:[ _-][\p{L}\p{N}]+)*$/u;
 
@@ -160,6 +160,7 @@
     const moreButton = document.getElementById("dino-more");
     const colorButtons = [...document.querySelectorAll("[data-dino-color]")];
     const widthButtons = [...document.querySelectorAll("[data-dino-width]")];
+    const strokeCount = document.getElementById("dino-stroke-count");
     const endpointText = [...document.querySelectorAll('meta[name="mailbox-api"]')]
       .map((node) => node.content.trim()).find(Boolean) || "";
     let api = "";
@@ -216,6 +217,7 @@
 
     function render() {
       paint(context, strokes);
+      if (strokeCount) strokeCount.textContent = `${strokes.length} / ${MAX_STROKES}`;
       if (keyboardFocus) {
         context.save();
         context.strokeStyle = erasing ? "#ff2a74" : color;
@@ -246,11 +248,16 @@
       return strokes.reduce((total, stroke) => total + stroke.points.length, 0);
     }
 
+    function thinStroke(stroke) {
+      if (stroke.points.length < 4) return false;
+      stroke.points = stroke.points.filter((_, index) => index === 0 || index === stroke.points.length - 1 || index % 2 === 0);
+      return true;
+    }
+
     function reducePoints() {
-      for (const stroke of strokes) {
-        if (stroke.points.length < 4) continue;
-        stroke.points = stroke.points.filter((_, index) => index === 0 || index === stroke.points.length - 1 || index % 2 === 0);
-      }
+      let reduced = false;
+      for (const stroke of strokes) reduced = thinStroke(stroke) || reduced;
+      return reduced;
     }
 
     function pointFromEvent(event) {
@@ -282,8 +289,21 @@
       const previous = currentStroke.points[currentStroke.points.length - 1];
       if (Math.hypot(point[0] - previous[0], point[1] - previous[1]) < 1.5) return;
       currentStroke.points.push(point);
-      if (currentStroke.points.length > MAX_POINTS_PER_STROKE || pointBudget() > MAX_POINTS) reducePoints();
-      render();
+      let simplified = false;
+      if (currentStroke.points.length > MAX_POINTS_PER_STROKE) simplified = thinStroke(currentStroke);
+      if (pointBudget() > MAX_POINTS) simplified = reducePoints() || simplified;
+      if (simplified || keyboardFocus) {
+        render();
+      } else {
+        context.strokeStyle = currentStroke.color;
+        context.lineWidth = currentStroke.width;
+        context.lineCap = "round";
+        context.lineJoin = "round";
+        context.beginPath();
+        context.moveTo(previous[0], previous[1]);
+        context.lineTo(point[0], point[1]);
+        context.stroke();
+      }
     }
 
     function finishStroke() {
@@ -400,7 +420,8 @@
     });
 
     function responseError(response) {
-      if (response.status === 400 || response.status === 413) return "El dibujo o el nombre no cumple los límites. Prueba con menos trazos.";
+      if (response.status === 400) return "El dibujo o el apodo no cumple los límites. Revisa los trazos e inténtalo otra vez.";
+      if (response.status === 413) return "El dibujo pesa demasiado para enviarlo. Prueba con menos trazos o líneas más cortas.";
       if (response.status === 401 || response.status === 403) return "Clave de administración incorrecta.";
       if (response.status === 429) return "Demasiados envíos por ahora. Prueba en unos minutos.";
       if (response.status === 507) return "El museo está lleno por ahora. Vuelve cuando haya espacio para más dinos.";
@@ -593,7 +614,16 @@
             website: document.getElementById("dino-website")?.value || ""
           })
         });
-        setStatus("Publicado. Tu dinosaurio ya anda suelto por el tablón.", "success");
+        finishStroke();
+        strokes = starterSketch();
+        history.length = 0;
+        color = "#00a7c8";
+        brushWidth = 2;
+        erasing = false;
+        updateTools();
+        if (undoButton) undoButton.disabled = true;
+        render();
+        setStatus("Publicado. Tu dinosaurio ya anda suelto; el boceto volvió para la próxima ronda.", "success");
         await loadGallery();
       } catch (error) {
         setStatus(error.message || "No se pudo publicar. Prueba más tarde.", "error");
