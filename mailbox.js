@@ -149,12 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
       publish.type = "button";
       publish.textContent = item.status === "approved" ? "Actualizar respuesta" : "Responder y publicar";
       publish.addEventListener("click", () => moderate(item.id, { status: "approved", answer: answer.value.trim() }));
-      const reject = document.createElement("button");
-      reject.type = "button";
-      reject.className = "reject";
-      reject.textContent = item.status === "rejected" ? "Restaurar" : "Descartar";
-      reject.addEventListener("click", () => moderate(item.id, { status: item.status === "rejected" ? "pending" : "rejected" }));
-      actions.append(publish, reject);
+      const discard = document.createElement("button");
+      discard.type = "button";
+      discard.className = "reject";
+      discard.textContent = "Eliminar definitivamente";
+      discard.addEventListener("click", () => deleteQuestion(item.id, discard));
+      actions.append(publish, discard);
       card.append(meta, questionText, answer, actions);
       pending.append(card);
     });
@@ -191,6 +191,23 @@ document.addEventListener("DOMContentLoaded", () => {
       await Promise.all([loadAdmin(), loadPublic()]);
       adminStatus.textContent = body.status === "approved" ? "Respuesta publicada." : "Nota actualizada.";
     } catch (error) {
+      adminStatus.textContent = error.message;
+    }
+  }
+
+  async function deleteQuestion(id, button) {
+    if (!window.confirm("¿Eliminar esta nota definitivamente? No se podrá restaurar.")) return;
+    button.disabled = true;
+    adminStatus.textContent = "Eliminando nota…";
+    try {
+      await request(`/api/admin/questions/${encodeURIComponent(id)}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${adminToken}` }
+      });
+      await Promise.all([loadAdmin(), loadPublic()]);
+      adminStatus.textContent = "Nota eliminada definitivamente.";
+    } catch (error) {
+      button.disabled = false;
       adminStatus.textContent = error.message;
     }
   }
