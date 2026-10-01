@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const answer = document.createElement("p");
       answer.className = "mailbox-entry-answer";
       const byline = document.createElement("strong");
-      byline.textContent = "Angel responde";
+      byline.textContent = "Respuesta";
       answer.append(byline, document.createTextNode(item.answer));
       article.append(head, questionText, answer);
       list.append(article);
